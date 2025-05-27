@@ -37,6 +37,7 @@
 						<span class="align-middle">엑셀 업로드</span>
 						<div>
 							<label for="formFileLg" class="form-label"></label>
+<!--							<input class="form-control form-control-lg" id="formFileLg" type="file">-->
 							<input class="form-control form-control-lg" id="formFileLg" type="file">
 						</div>
 						<div class="mt-5 d-flex align-items-center">
@@ -61,37 +62,3 @@
         $("#fileUploadBtn").on("click", function() {
             const file = document.getElementById('formFileLg').files[0];
             const checkId = document.getElementById('checkId');
-
-            if (!file) {
-                alert('파일을 선택해 주세요.');
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('file', file); // 파일을 FormData에 추가
-            formData.append('checkId', checkId.checked);
-
-            $.ajax({
-                type: 'POST',
-                url: '/upload',
-                data: formData,
-                processData: false, // jQuery가 데이터를 변환하지 않도록 설정
-                contentType: false, // 브라우저가 MIME 타입을 자동으로 설정하도록 설정
-                success: function (response) {
-                    alert(response);
-                },
-                error: function (xhr, status, error) {
-                    alert('error');
-                }
-            });
-        });
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-</body>
-</html>
